@@ -42,8 +42,8 @@ export default function App() {
   // const icon = "https://img.icons8.com/fluency/48/gps-device.png";
   return (
     <>
-      <h1>lat :{local?.lat}</h1>
-      <h1>long: {local?.long}</h1>
+     {/*  <h1>lat :{local?.lat}</h1>
+      <h1>long: {local?.long}</h1> */}
       {isLoaded && local && (
         <GoogleMap
           mapContainerStyle={containerStyle}
