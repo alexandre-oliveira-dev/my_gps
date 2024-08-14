@@ -40,18 +40,18 @@ export default function App() {
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
           zoom={18}
-          clickableIcons={false}
+          clickableIcons={true}
           options={{
             scaleControl: true,
             rotateControl: true,
           }}
         >
-          {isLoaded && (
+          {local.lat && local.long && (
             <Marker
               options={{label: "ola"}}
               icon={{
                 url: mor,
-                scaledSize: new window.google.maps.Size(500, 500),
+                scaledSize: new window.google.maps.Size(50, 50),
               }}
               position={{lat: local.lat, lng: local.long}}
             ></Marker>
