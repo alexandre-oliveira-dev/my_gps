@@ -32,12 +32,13 @@ export default function App() {
     }
   }, [map, local.lat, local.long]);
 
-  setInterval(() => {
+  
     navigator.geolocation.watchPosition(position => {
-      const {latitude, longitude} = position.coords;
+      const { latitude, longitude } = position.coords;
       setLocal({lat: latitude, long: longitude});
+      console.log(local)
     });
-  }, 1000);
+  
 
   if (!isLoaded) return <div>Loading...</div>;
 
@@ -45,7 +46,7 @@ export default function App() {
   return (
     <>
       <h1>lat :{local?.lat}</h1>
-      <h1>long: {local?.long}</h1>
+      <h1 style={{color:'green'}}>long: {local?.long}</h1>
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={containerStyle}
