@@ -40,8 +40,9 @@ export default function App() {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
-          zoom={18}
+          zoom={14}
           clickableIcons={true}
+          
           options={{
             scaleControl: true,
             rotateControl: true,
