@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import "./App.css";
 import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 import mor from "./assets/mor.png";
-import eu from "./assets/eu.png";
+// import eu from "./assets/eu.png";
 
 export default function App() {
   const [local, setLocal] = useState<{
@@ -31,13 +31,13 @@ export default function App() {
 
   if (!isLoaded) return <div>Loading...</div>;
 
-  const handleMapLoad = (map: google.maps.Map) => {
+  /*  const handleMapLoad = (map: google.maps.Map) => {
     const bounds = new window.google.maps.LatLngBounds();
     bounds.extend(new window.google.maps.LatLng(local.lat, local.long));
     bounds.extend(new window.google.maps.LatLng(-23.5522944, -46.6637558));
 
     map.fitBounds(bounds);
-  };
+  }; */
 
   // const icon = "https://img.icons8.com/fluency/48/gps-device.png";
   return (
@@ -49,7 +49,8 @@ export default function App() {
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
           clickableIcons={true}
-          onLoad={map => handleMapLoad(map)}
+          //  onLoad={map => handleMapLoad(map)}
+          zoom={16}
           options={{
             scaleControl: true,
             rotateControl: true,
@@ -71,14 +72,14 @@ export default function App() {
                 position={{lat: local.lat, lng: local.long}}
               ></Marker>
 
-              <Marker
+              {/*  <Marker
                 icon={{
                   url: eu,
                   scaledSize: new window.google.maps.Size(70, 70),
                   anchor: new window.google.maps.Point(25, 50),
                 }}
                 position={{lat: -23.5522944, lng: -46.6637558}}
-              ></Marker>
+              ></Marker> */}
             </>
           )}
         </GoogleMap>
