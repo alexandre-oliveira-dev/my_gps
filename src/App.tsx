@@ -41,7 +41,7 @@ export default function App() {
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
           clickableIcons={true}
-          zoom={14}
+          zoom={11}
           options={{
             scaleControl: true,
             rotateControl: true,
@@ -67,6 +67,7 @@ export default function App() {
                 icon={{
                   url: eu,
                   scaledSize: new window.google.maps.Size(70, 70),
+                  anchor: new window.google.maps.Point(25, 50),
                 }}
                 position={{lat: -23.5522944, lng: -46.6637558}}
               ></Marker>
