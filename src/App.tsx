@@ -12,34 +12,34 @@ export default function App() {
     lat: -23.619379,
     long: -46.424244,
   });
-
+  const [map, setMap] = useState<google.maps.Map>();
   const containerStyle = {
     width: "100%",
     height: "100vh",
   };
 
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: "AIzaSyDNLaY6OJ3rHnHY2pl0-3Wci3B-UzVCMKY",
+    googleMapsApiKey: import.meta.env.VITE_MAPS_KEY,
   });
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position => {
+    if (map) {
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(new window.google.maps.LatLng(local.lat, local.long));
+      bounds.extend(new window.google.maps.LatLng(-23.5977873, -46.4789993));
+
+      map.fitBounds(bounds);
+    }
+  }, [map, local.lat, local.long]);
+
+  setInterval(() => {
+    navigator.geolocation.watchPosition(position => {
       const {latitude, longitude} = position.coords;
       setLocal({lat: latitude, long: longitude});
     });
-    return () => {};
-  }, [local.lat, local.long]);
-
-  console.log(local.lat, local.long);
+  }, 1000);
 
   if (!isLoaded) return <div>Loading...</div>;
-
-  const handleMapLoad = (map: google.maps.Map) => {
-    const bounds = new window.google.maps.LatLngBounds();
-    bounds.extend(new window.google.maps.LatLng(local.lat, local.long));
-    bounds.extend(new window.google.maps.LatLng(-23.5977873, -46.4789993));
-
-    map.fitBounds(bounds);
-  };
 
   // const icon = "https://img.icons8.com/fluency/48/gps-device.png";
   return (
@@ -51,8 +51,7 @@ export default function App() {
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
           clickableIcons={true}
-          onLoad={map => handleMapLoad(map)}
-          zoom={16}
+          onLoad={map => setMap(map)}
           options={{
             scaleControl: true,
             rotateControl: true,
