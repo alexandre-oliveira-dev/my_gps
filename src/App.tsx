@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import "./App.css";
 import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 import mor from "./assets/mor.png";
+import eu from "./assets/eu.png";
 
 export default function App() {
   const [local, setLocal] = useState<{
@@ -58,10 +59,10 @@ export default function App() {
 
               <Marker
                 icon={{
-                  url: mor,
+                  url: eu,
                   scaledSize: new window.google.maps.Size(70, 70),
                 }}
-                position={{lat: -23.619379, lng: -46.424244}}
+                position={{lat: -23.5522944, lng: -46.6637558}}
               ></Marker>
             </>
           )}
