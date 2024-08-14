@@ -31,6 +31,14 @@ export default function App() {
 
   if (!isLoaded) return <div>Loading...</div>;
 
+  const handleMapLoad = (map: google.maps.Map) => {
+    const bounds = new window.google.maps.LatLngBounds();
+    bounds.extend(new window.google.maps.LatLng(local.lat, local.long));
+    bounds.extend(new window.google.maps.LatLng(-23.5522944, -46.6637558));
+
+    map.fitBounds(bounds);
+  };
+
   // const icon = "https://img.icons8.com/fluency/48/gps-device.png";
   return (
     <>
@@ -41,7 +49,7 @@ export default function App() {
           mapContainerStyle={containerStyle}
           center={{lat: local.lat, lng: local.long}}
           clickableIcons={true}
-          zoom={11}
+          onLoad={map => handleMapLoad(map)}
           options={{
             scaleControl: true,
             rotateControl: true,
