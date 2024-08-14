@@ -42,8 +42,8 @@ export default function App() {
   // const icon = "https://img.icons8.com/fluency/48/gps-device.png";
   return (
     <>
-      {/* <h1>lat :{local?.lat}</h1>
-      <h1>long: {local?.long}</h1> */}
+      <h1>lat :{local?.lat}</h1>
+      <h1>long: {local?.long}</h1>
       {isLoaded && local && (
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -61,19 +61,18 @@ export default function App() {
             <>
               <Marker
                 icon={{
-                  url: mor,
-                  scaledSize: new window.google.maps.Size(70, 70),
-                }}
-                position={{lat: local.lat, lng: local.long}}
-              ></Marker>
-
-              <Marker
-                icon={{
                   url: eu,
                   scaledSize: new window.google.maps.Size(70, 70),
                   anchor: new window.google.maps.Point(25, 50),
                 }}
-                position={{lat: -23.5522944, lng: -46.6637558}}
+                position={{lat: -23.5977873, lng: -46.4789993}}
+              ></Marker>
+              <Marker
+                icon={{
+                  url: mor,
+                  scaledSize: new window.google.maps.Size(70, 70),
+                }}
+                position={{lat: local.lat, lng: local.long}}
               ></Marker>
             </>
           )}
